@@ -9,3 +9,4 @@ bot_core = { path = "../bot_core" }
 rusqlite = { version = "0.40", features = ["bundled"] }
 chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
 teloxide = { version = "0.17" }
+log = "0.4.33"
