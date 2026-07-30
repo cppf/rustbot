@@ -40,7 +40,7 @@ pub fn new_settings_menu() -> (KeyboardMarkup, SettingsMenuButtons) {
         vec![KeyboardButton::new(btns.stats.clone())],
         vec![KeyboardButton::new(btns.back.clone())],
     ])
-    .resize_keyboard(true);
+    .resize_keyboard();
 
     (menu, btns)
 }

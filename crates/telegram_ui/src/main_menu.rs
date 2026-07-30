@@ -21,6 +21,6 @@ pub fn new_main_menu() -> (KeyboardMarkup, MainMenuButtons) {
         KeyboardButton::new(btns.start.clone()),
         KeyboardButton::new(btns.settings.clone()),
     ]])
-    .resize_keyboard(true);
+    .resize_keyboard();
     (menu, btns)
 }

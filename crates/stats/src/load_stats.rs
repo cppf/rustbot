@@ -1,11 +1,8 @@
-use chrono::Timelike;
-use chrono::Timelike;
 //! Queries SQLite for a fresh `Stats` snapshot.
-
-use chrono::{DateTime, Datelike, Duration, TimeZone, Utc};
 
 use crate::db::Db;
 use crate::stats::Stats;
+use chrono::{DateTime, Datelike, Duration, TimeZone, Timelike, Utc};
 
 /// How recently a user must have been seen to count as "currently using
 /// the bot".
