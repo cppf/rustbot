@@ -64,7 +64,7 @@ fn is_non_command_text(msg: &Message) -> bool {
 /// that are also commands (e.g. `/start`) are excluded, since those are
 /// matched earlier in the schema by `register_main_menu_handlers`.
 pub fn content_handlers(
-) -> Handler<'static, DependencyMap, ResponseResult<()>, DpHandlerDescription> {
+) -> Handler<'static, ResponseResult<()>, DpHandlerDescription> {
     dptree::entry()
         .branch(
             Update::filter_message()
