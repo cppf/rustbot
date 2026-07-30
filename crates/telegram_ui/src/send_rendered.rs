@@ -19,7 +19,7 @@ pub async fn send_rendered(
     for (i, chunk) in chunks.iter().enumerate() {
         let mut req = bot
             .send_message(msg.chat.id, chunk)
-            .parse_mode(ParseMode::Markdown);
+            .parse_mode(ParseMode::MarkdownV2);
         if i == chunks.len() - 1 {
             req = req.reply_markup(menu.clone());
         }
