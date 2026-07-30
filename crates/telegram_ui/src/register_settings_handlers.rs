@@ -2,7 +2,7 @@
 //! buttons on the settings keyboard.
 
 use bot_core::Mode;
-use teloxide::dispatching::DpHandlerDescription;
+use teloxide::dispatching::{DpHandlerDescription, DependencyMap};
 use teloxide::dptree;
 use teloxide::prelude::*;
 use teloxide::types::KeyboardMarkup;
@@ -16,7 +16,7 @@ use crate::store::Store;
 /// button's exact text.
 pub fn settings_handlers(
     settings_btns: &SettingsMenuButtons,
-) -> Handler<'static, ResponseResult<()>, DpHandlerDescription> {
+) -> Handler<'static, DependencyMap, ResponseResult<()>, DpHandlerDescription> {
     let word_text = settings_btns.word.clone();
     let sentence_text = settings_btns.sentence.clone();
     let paragraph_text = settings_btns.paragraph.clone();
