@@ -16,15 +16,14 @@ use crate::wrap_code::wrap_code;
 /// preserved.
 pub fn render(mode: Mode, text: &str) -> String {
     match mode {
-        Mode::Word => render_units(text, |t| split_words(t)),
-        Mode::Sentence => render_units(text, |t| split_sentences(t)),
-        Mode::Paragraph => render_units(text, |t| split_paragraphs(t)),
-        Mode::Full => {
-            if text.trim().is_empty() {
-                text.to_string()
-            } else {
-                wrap_code(text)
-            }
+    Mode::Word => render_units(text, split_words),
+    Mode::Sentence => render_units(text, split_sentences),
+    Mode::Paragraph => render_units(text, split_paragraphs),
+    Mode::Full => {
+        if text.trim().is_empty() {
+            text.to_string()
+        } else {
+            wrap_code(text)
         }
     }
-}
+    }
