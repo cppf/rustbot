@@ -21,7 +21,7 @@ pub async fn resend_media(
             let mut req = bot
                 .send_photo(chat_id, InputFile::file_id(largest.file.id.clone()))
                 .caption(caption)
-                .parse_mode(ParseMode::Markdown);
+                .parse_mode(ParseMode::MarkdownV2);
             if let Some(menu) = reply_markup {
                 req = req.reply_markup(menu);
             }
@@ -31,7 +31,7 @@ pub async fn resend_media(
         let mut req = bot
             .send_video(chat_id, InputFile::file_id(video.file.id.clone()))
             .caption(caption)
-            .parse_mode(ParseMode::Markdown);
+            .parse_mode(ParseMode::MarkdownV2);
         if let Some(menu) = reply_markup {
             req = req.reply_markup(menu);
         }
@@ -40,7 +40,7 @@ pub async fn resend_media(
         let mut req = bot
             .send_animation(chat_id, InputFile::file_id(animation.file.id.clone()))
             .caption(caption)
-            .parse_mode(ParseMode::Markdown);
+            .parse_mode(ParseMode::MarkdownV2);
         if let Some(menu) = reply_markup {
             req = req.reply_markup(menu);
         }
@@ -49,7 +49,7 @@ pub async fn resend_media(
         let mut req = bot
             .send_audio(chat_id, InputFile::file_id(audio.file.id.clone()))
             .caption(caption)
-            .parse_mode(ParseMode::Markdown);
+            .parse_mode(ParseMode::MarkdownV2);
         if let Some(menu) = reply_markup {
             req = req.reply_markup(menu);
         }
@@ -58,7 +58,7 @@ pub async fn resend_media(
         let mut req = bot
             .send_voice(chat_id, InputFile::file_id(voice.file.id.clone()))
             .caption(caption)
-            .parse_mode(ParseMode::Markdown);
+            .parse_mode(ParseMode::MarkdownV2);
         if let Some(menu) = reply_markup {
             req = req.reply_markup(menu);
         }
@@ -67,7 +67,7 @@ pub async fn resend_media(
         let mut req = bot
             .send_document(chat_id, InputFile::file_id(document.file.id.clone()))
             .caption(caption)
-            .parse_mode(ParseMode::Markdown);
+            .parse_mode(ParseMode::MarkdownV2);
         if let Some(menu) = reply_markup {
             req = req.reply_markup(menu);
         }
