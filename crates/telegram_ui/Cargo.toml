@@ -8,4 +8,4 @@ rust-version.workspace = true
 bot_core = { path = "../bot_core" }
 rendering = { path = "../rendering" }
 stats = { path = "../stats" }
-teloxide = { version = "0.17", features = ["macros", "webhooks-axum"] }
+teloxide = { version = "0.17", features = ["webhooks-axum", "macros"] }
