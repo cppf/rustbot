@@ -16,7 +16,7 @@ use crate::store::Store;
 /// button's exact text.
 pub fn settings_handlers(
     settings_btns: &SettingsMenuButtons,
-) -> Handler<'static, DependencyMap, ResponseResult<()>, DpHandlerDescription> {
+) -> Handler<'static, ResponseResult<()>, DpHandlerDescription> {
     let word_text = settings_btns.word.clone();
     let sentence_text = settings_btns.sentence.clone();
     let paragraph_text = settings_btns.paragraph.clone();
