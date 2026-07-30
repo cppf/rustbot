@@ -1,0 +1,11 @@
+[package]
+name = "telegram_ui"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+bot_core = { path = "../bot_core" }
+rendering = { path = "../rendering" }
+stats = { path = "../stats" }
+teloxide = { version = "0.17", features = ["webhooks-axum"] }
