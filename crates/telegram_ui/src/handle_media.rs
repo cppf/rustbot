@@ -42,7 +42,7 @@ pub async fn handle_media(
     for (i, chunk) in rest.iter().enumerate() {
         let mut req = bot
             .send_message(msg.chat.id, chunk)
-            .parse_mode(ParseMode::Markdown);
+            .parse_mode(ParseMode::MarkdownV2);
         if i == rest.len() - 1 {
             req = req.reply_markup(menu.clone());
         }
