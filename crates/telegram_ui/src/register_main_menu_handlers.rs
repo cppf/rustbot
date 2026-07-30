@@ -61,7 +61,7 @@ async fn on_back_button(bot: Bot, msg: Message, main_menu: KeyboardMarkup) -> Re
 pub fn main_menu_handlers(
     main_btns: &MainMenuButtons,
     settings_btns: &SettingsMenuButtons,
-) -> Handler<'static, DependencyMap, ResponseResult<()>, DpHandlerDescription> {
+) -> Handler<'static, ResponseResult<()>, DpHandlerDescription> {
     let start_text = main_btns.start.clone();
     let settings_text = main_btns.settings.clone();
     let back_text = settings_btns.back.clone();
