@@ -67,7 +67,11 @@ pub fn main_menu_handlers(
     let back_text = settings_btns.back.clone();
 
     dptree::entry()
-        .branch(Update::filter_message().filter_command::<Command>().endpoint(on_start))
+        .branch(
+            Update::filter_message()
+                .filter_command::<Command>()
+                .endpoint(on_start),
+        )
         .branch(
             Update::filter_message()
                 .filter(move |msg: Message| msg.text() == Some(start_text.as_str()))

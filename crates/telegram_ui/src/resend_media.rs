@@ -81,8 +81,7 @@ pub async fn resend_media(
         req.await?;
     } else if let Some(video_note) = msg.video_note() {
         // Video notes have no caption in the Bot API.
-        let mut req =
-            bot.send_video_note(chat_id, InputFile::file_id(video_note.file.id.clone()));
+        let mut req = bot.send_video_note(chat_id, InputFile::file_id(video_note.file.id.clone()));
         if let Some(menu) = reply_markup {
             req = req.reply_markup(menu);
         }

@@ -56,8 +56,7 @@ pub fn load_stats(db: &Db) -> rusqlite::Result<Stats> {
             |row| row.get(0),
         )?;
 
-        s.unique_users =
-            conn.query_row("SELECT COUNT(*) FROM users", [], |row| row.get(0))?;
+        s.unique_users = conn.query_row("SELECT COUNT(*) FROM users", [], |row| row.get(0))?;
 
         s.messages_lifetime =
             conn.query_row("SELECT COUNT(*) FROM messages", [], |row| row.get(0))?;

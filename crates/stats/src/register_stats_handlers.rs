@@ -2,8 +2,8 @@
 //! inline button on the resulting message.
 
 use teloxide::prelude::*;
-use teloxide::types::{CallbackQuery, Message};
 use teloxide::types::ParseMode;
+use teloxide::types::{CallbackQuery, Message};
 use teloxide::RequestError;
 
 use crate::db::Db;
@@ -44,7 +44,9 @@ pub async fn on_stats_refresh(bot: Bot, q: CallbackQuery, db: Db) -> ResponseRes
         Ok(s) => s,
         Err(e) => {
             log::error!("stats: refresh: {e}");
-            bot.answer_callback_query(q.id).text("Couldn't refresh \u{2014} try again.").await?;
+            bot.answer_callback_query(q.id)
+                .text("Couldn't refresh \u{2014} try again.")
+                .await?;
             return Ok(());
         }
     };
@@ -52,7 +54,9 @@ pub async fn on_stats_refresh(bot: Bot, q: CallbackQuery, db: Db) -> ResponseRes
     let Some(message) = q.regular_message() else {
         // The original message is inaccessible (too old) or this came
         // from inline mode; there is nothing we can edit in place.
-        bot.answer_callback_query(q.id).text("Couldn't refresh \u{2014} try again.").await?;
+        bot.answer_callback_query(q.id)
+            .text("Couldn't refresh \u{2014} try again.")
+            .await?;
         return Ok(());
     };
 
@@ -65,17 +69,23 @@ pub async fn on_stats_refresh(bot: Bot, q: CallbackQuery, db: Db) -> ResponseRes
 
     match edit_result {
         Ok(_) => {
-            bot.answer_callback_query(q.id).text("Refreshed \u{2705}").await?;
+            bot.answer_callback_query(q.id)
+                .text("Refreshed \u{2705}")
+                .await?;
         }
         Err(e) => {
             if is_not_modified_err(&e) {
                 // Telegram errors if the content is byte-for-byte
                 // identical to the current message (e.g. two refreshes
                 // within the same second). That's not a real failure.
-                bot.answer_callback_query(q.id).text("Already up to date.").await?;
+                bot.answer_callback_query(q.id)
+                    .text("Already up to date.")
+                    .await?;
             } else {
                 log::error!("stats: edit: {e}");
-                bot.answer_callback_query(q.id).text("Couldn't refresh \u{2014} try again.").await?;
+                bot.answer_callback_query(q.id)
+                    .text("Couldn't refresh \u{2014} try again.")
+                    .await?;
             }
         }
     }

@@ -26,29 +26,37 @@ pub fn settings_handlers(
         .branch(
             Update::filter_message()
                 .filter(move |msg: Message| msg.text() == Some(word_text.as_str()))
-                .endpoint(move |bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup| {
-                    mode_handler(bot, msg, store, main_menu, Mode::Word)
-                }),
+                .endpoint(
+                    move |bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup| {
+                        mode_handler(bot, msg, store, main_menu, Mode::Word)
+                    },
+                ),
         )
         .branch(
             Update::filter_message()
                 .filter(move |msg: Message| msg.text() == Some(sentence_text.as_str()))
-                .endpoint(move |bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup| {
-                    mode_handler(bot, msg, store, main_menu, Mode::Sentence)
-                }),
+                .endpoint(
+                    move |bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup| {
+                        mode_handler(bot, msg, store, main_menu, Mode::Sentence)
+                    },
+                ),
         )
         .branch(
             Update::filter_message()
                 .filter(move |msg: Message| msg.text() == Some(paragraph_text.as_str()))
-                .endpoint(move |bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup| {
-                    mode_handler(bot, msg, store, main_menu, Mode::Paragraph)
-                }),
+                .endpoint(
+                    move |bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup| {
+                        mode_handler(bot, msg, store, main_menu, Mode::Paragraph)
+                    },
+                ),
         )
         .branch(
             Update::filter_message()
                 .filter(move |msg: Message| msg.text() == Some(full_text.as_str()))
-                .endpoint(move |bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup| {
-                    mode_handler(bot, msg, store, main_menu, Mode::Full)
-                }),
+                .endpoint(
+                    move |bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup| {
+                        mode_handler(bot, msg, store, main_menu, Mode::Full)
+                    },
+                ),
         )
 }

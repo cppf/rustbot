@@ -17,7 +17,9 @@ pub async fn send_rendered(
     let rendered = render(mode, text);
     let chunks = split_for_telegram(&rendered, TELEGRAM_MESSAGE_LIMIT);
     for (i, chunk) in chunks.iter().enumerate() {
-        let mut req = bot.send_message(msg.chat.id, chunk).parse_mode(ParseMode::Markdown);
+        let mut req = bot
+            .send_message(msg.chat.id, chunk)
+            .parse_mode(ParseMode::Markdown);
         if i == chunks.len() - 1 {
             req = req.reply_markup(menu.clone());
         }

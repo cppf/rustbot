@@ -22,7 +22,10 @@ fn full_mode_escapes_backticks() {
 
 #[test]
 fn word_mode_wraps_each_word() {
-    assert_eq!(render(Mode::Word, "hello world foo"), "`hello` `world` `foo`");
+    assert_eq!(
+        render(Mode::Word, "hello world foo"),
+        "`hello` `world` `foo`"
+    );
 }
 
 #[test]

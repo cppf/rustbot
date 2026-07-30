@@ -9,7 +9,12 @@ use crate::handle_media::handle_media;
 use crate::send_rendered::send_rendered;
 use crate::store::Store;
 
-async fn on_text(bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup) -> ResponseResult<()> {
+async fn on_text(
+    bot: Bot,
+    msg: Message,
+    store: Store,
+    main_menu: KeyboardMarkup,
+) -> ResponseResult<()> {
     let mode = msg
         .from
         .as_ref()
@@ -21,7 +26,12 @@ async fn on_text(bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup
     Ok(())
 }
 
-async fn on_media(bot: Bot, msg: Message, store: Store, main_menu: KeyboardMarkup) -> ResponseResult<()> {
+async fn on_media(
+    bot: Bot,
+    msg: Message,
+    store: Store,
+    main_menu: KeyboardMarkup,
+) -> ResponseResult<()> {
     let mode = msg
         .from
         .as_ref()
@@ -53,12 +63,17 @@ fn is_non_command_text(msg: &Message) -> bool {
 /// messages and media (photos, videos, voice notes, etc.). Text messages
 /// that are also commands (e.g. `/start`) are excluded, since those are
 /// matched earlier in the schema by `register_main_menu_handlers`.
-pub fn content_handlers() -> Handler<'static, DependencyMap, ResponseResult<()>, DpHandlerDescription> {
+pub fn content_handlers(
+) -> Handler<'static, DependencyMap, ResponseResult<()>, DpHandlerDescription> {
     dptree::entry()
         .branch(
             Update::filter_message()
                 .filter(|msg: Message| is_non_command_text(&msg))
                 .endpoint(on_text),
         )
-        .branch(Update::filter_message().filter(|msg: Message| is_media(&msg)).endpoint(on_media))
+        .branch(
+            Update::filter_message()
+                .filter(|msg: Message| is_media(&msg))
+                .endpoint(on_media),
+        )
 }

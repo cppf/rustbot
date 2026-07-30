@@ -13,5 +13,9 @@ pub fn split_surrounding_space(s: &str) -> (String, String, String) {
     let trimmed_both = trimmed_left.trim_end_matches(WHITESPACE);
     let trail = &trimmed_left[trimmed_both.len()..];
 
-    (lead.to_string(), trimmed_both.to_string(), trail.to_string())
+    (
+        lead.to_string(),
+        trimmed_both.to_string(),
+        trail.to_string(),
+    )
 }
