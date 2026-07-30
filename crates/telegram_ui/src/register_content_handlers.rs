@@ -20,9 +20,11 @@ async fn on_text(
         .as_ref()
         .map(|u| store.get(u.id.0 as i64))
         .unwrap_or(bot_core::DEFAULT_MODE);
+
     if let Some(text) = msg.text() {
         send_rendered(&bot, &msg, mode, text, &main_menu).await?;
     }
+
     Ok(())
 }
 
@@ -37,6 +39,7 @@ async fn on_media(
         .as_ref()
         .map(|u| store.get(u.id.0 as i64))
         .unwrap_or(bot_core::DEFAULT_MODE);
+
     handle_media(&bot, &msg, mode, &main_menu).await?;
     Ok(())
 }
@@ -63,8 +66,7 @@ fn is_non_command_text(msg: &Message) -> bool {
 /// messages and media (photos, videos, voice notes, etc.). Text messages
 /// that are also commands (e.g. `/start`) are excluded, since those are
 /// matched earlier in the schema by `register_main_menu_handlers`.
-pub fn content_handlers(
-) -> Handler<'static, ResponseResult<()>, DpHandlerDescription> {
+pub fn content_handlers() -> Handler<'static, ResponseResult<()>, DpHandlerDescription> {
     dptree::entry()
         .branch(
             Update::filter_message()
